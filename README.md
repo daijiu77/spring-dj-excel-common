@@ -38,12 +38,12 @@ Configuration description：<br>
 
 Typically the configuration file is located in the project's resources directory:<br>
 main<br>
->java
->resources
->>excelconfigs<br>
->>>excel-user-info.xml<br>
->>>excel-product.xml<br>
->>application.yml<br>
+    java<br>
+    resources<br>
+      excelconfigs<br>
+        excel-user-info.xml<br>
+        excel-product.xml<br>
+      application.yml<br>
 
 Add a @EnableExcelConfigScan annotation to the startup class and specify the XML configuration file directory location<br>
 example:<br>
