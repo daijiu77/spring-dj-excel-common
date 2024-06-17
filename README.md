@@ -25,16 +25,16 @@ The following is a simple configuration file example, and the configuration file
     <column alias="create_time" allowEmpty="true" columnWidth="280" name="create_time" text="CreateDate" type="date" index="14" style="" />
 </FieldMappings>
 
-Configuration description：
+Configuration description：<br>
 `name` - The name of the column in the corresponding data table<br>
-`alias` - The alias of the column (corresponding to the attribute name of the data model)
-`text` - Column header text of a table in an Excel file
-`columnWidth` - To set the column width of a table in an Excel file, you can also use the `width` property
-`allowEmpty` - If set to true, null is allowed, and false is not allowed
-`type` - Data type, type range: `string`, `int`, `float`, `double`, `boolean`, `date`
-`length` - The allowable length of the data
-`headStyle` - Excel file column header style settings, you can set the cell background color, cell foreground color, cell border line line width and border line color, text size, text position in the cell, text font type, text bold
-`style` - Each column is styled, and similar to headStyle, this property takes precedence over the headStyle property
+`alias` - The alias of the column (corresponding to the attribute name of the data model)<br>
+`text` - Column header text of a table in an Excel file<br>
+`columnWidth` - To set the column width of a table in an Excel file, you can also use the `width` property<br>
+`allowEmpty` - If set to true, null is allowed, and false is not allowed<br>
+`type` - Data type, type range: `string`, `int`, `float`, `double`, `boolean`, `date`<br>
+`length` - The allowable length of the data<br>
+`headStyle` - Excel file column header style settings, you can set the cell background color, cell foreground color, cell border line line width and border line color, text size, text position in the cell, text font type, text bold<br>
+`style` - Each column is styled, and similar to headStyle, this property takes precedence over the headStyle property<br>
 
 Typically the configuration file is located in the project's resources directory:
 main
