@@ -26,11 +26,11 @@ The following is a simple configuration file example, and the configuration file
 </FieldMappings>
 
 Configuration description：
-    `name` - The name of the column in the corresponding data table< /br>
-    `alias` - The alias of the column (corresponding to the attribute name of the data model)
-    `text` - Column header text of a table in an Excel file
-    `columnWidth` - To set the column width of a table in an Excel file, you can also use the `width` property
-    `allowEmpty` - If set to true, null is allowed, and false is not allowed
+`name` - The name of the column in the corresponding data table<br>
+`alias` - The alias of the column (corresponding to the attribute name of the data model)
+`text` - Column header text of a table in an Excel file
+`columnWidth` - To set the column width of a table in an Excel file, you can also use the `width` property
+`allowEmpty` - If set to true, null is allowed, and false is not allowed
 `type` - Data type, type range: `string`, `int`, `float`, `double`, `boolean`, `date`
 `length` - The allowable length of the data
 `headStyle` - Excel file column header style settings, you can set the cell background color, cell foreground color, cell border line line width and border line color, text size, text position in the cell, text font type, text bold
