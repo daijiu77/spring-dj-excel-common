@@ -38,16 +38,16 @@ Configuration description：<br>
 
 Typically the configuration file is located in the project's resources directory:<br>
 main<br>
-  java<br>
-  resources<br>
-    excelconfigs<br>
-      excel-user-info.xml<br>
-      excel-product.xml<br>
-    application.yml<br>
+>java<br>
+>resources<br>
+>>excelconfigs<br>
+>>>excel-user-info.xml<br>
+>>>excel-product.xml<br>
+>>application.yml<br>
 
 Add a @EnableExcelConfigScan annotation to the startup class and specify the XML configuration file directory location<br>
 example:<br>
-@SpringBootApplicatio
+@SpringBootApplicatio<br>
 @EnableExcelConfigScan(configPackages = {"excelconfig"})
 public class UserInformationApplication {
     public static void main(String[] args) {
@@ -58,10 +58,10 @@ public class UserInformationApplication {
 `How to use it?`<br>
 This component supports data import and export in two formats: xls and xlsx file formats, in the program, Excel2003 means the suffix is xls file format, Excel2007 means suffix xlsx file format.<br>
 `1. Get the data of the Excel file`<br>
-    @Autowired
-    private IExcel2003Export excel2003Export;
-    @Autowired
-    private IExcel2007Import excel2007Import;
+>>@Autowired<br>
+>>private IExcel2003Export excel2003Export;<br>
+>>@Autowired<br>
+>>private IExcel2007Import excel2007Import;<br>
 
     @Test
     void getDataFromExcel() throws Exception {        
@@ -74,10 +74,10 @@ This component supports data import and export in two formats: xls and xlsx file
     }
    
 `2. Import the data into an Excel file`<br>
-    @Autowired
-    private IExcel2003Export excel2003Export;
-    @Autowired
-    private IExcel2007Import excel2007Import;
+>>@Autowired<br>
+>>private IExcel2003Export excel2003Export;<br>
+>>@Autowired<br>
+>>private IExcel2007Import excel2007Import;<br>
    
     private byte[] createExcel(IExcelImport excelImport) {
         String extName = "xls";
@@ -114,10 +114,10 @@ This component supports data import and export in two formats: xls and xlsx file
         return new byte[0];
     }<br>
 <br>
-    Use IExcel2003Export to call the createExcel method:<br>
-    byte[] data = createExcel(excel2003Import);<br>
+>>Use IExcel2003Export to call the createExcel method:<br>
+>>`byte[] data = createExcel(excel2003Import);`<br>
 <br>
-    Use IExcel2007Export to call the createExcel method:<br>
-    byte[] data = createExcel(excel2007Import);
+>>Use IExcel2007Export to call the createExcel method:<br>
+>>`byte[] data = createExcel(excel2007Import);`
 
 
