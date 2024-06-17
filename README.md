@@ -38,8 +38,8 @@ Configuration description：<br>
 
 Typically the configuration file is located in the project's resources directory:<br>
 main<br>
->java<br>
->resources<br>
+>java
+>resources
 >>excelconfigs<br>
 >>>excel-user-info.xml<br>
 >>>excel-product.xml<br>
