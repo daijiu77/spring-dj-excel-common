@@ -49,6 +49,7 @@ Add a @EnableExcelConfigScan annotation to the startup class and specify the XML
 example:<br>
 @SpringBootApplicatio<br>
 @EnableExcelConfigScan(configPackages = {"excelconfig"})
+
 public class UserInformationApplication {
     public static void main(String[] args) {
         SpringApplication.run(UserInformationApplication.class, args);
