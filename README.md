@@ -46,14 +46,15 @@ main<br>
 ----application.yml<br>
 
 Add a @EnableExcelConfigScan annotation to the startup class and specify the XML configuration file directory location<br>
-example:
-```@SpringBootApplicatio
-@EnableExcelConfigScan(configPackages = {"excelconfig"})
+example:<br>
+@SpringBootApplicatio<br>
+@EnableExcelConfigScan(configPackages = {"excelconfig"})<br>
+
 public class UserInformationApplication {
     public static void main(String[] args) {
         SpringApplication.run(UserInformationApplication.class, args);
     }
-}```
+}
 
 `How to use it?`<br>
 This component supports data import and export in two formats: xls and xlsx file formats, in the program, Excel2003 means the suffix is xls file format, Excel2007 means suffix xlsx file format.<br>
