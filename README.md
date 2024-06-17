@@ -115,9 +115,9 @@ This component supports data import and export in two formats: xls and xlsx file
     }<br>
 <br>
 Use IExcel2003Export to call the createExcel method:<br>
-`byte[] data = createExcel(excel2003Import);`<br>
+`byte[] data = createExcel(excel2003Import)`<br>
 <br>
 Use IExcel2007Export to call the createExcel method:<br>
-`byte[] data = createExcel(excel2007Import);`
+`byte[] data = createExcel(excel2007Import)`
 
 
