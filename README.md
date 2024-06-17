@@ -26,15 +26,15 @@ The following is a simple configuration file example, and the configuration file
 </FieldMappings>
 
 Configuration description：
-name - The name of the column in the corresponding data table
-alias - The alias of the column (corresponding to the attribute name of the data model)
-text - Column header text of a table in an Excel file 
-columnWidth - To set the column width of a table in an Excel file, you can also use the width property
-allowEmpty - If set to true, null is allowed, and false is not allowed
-type - Data type, type range: string, int, float, double, boolean, date
-length - The allowable length of the data
-headStyle - Excel file column header style settings, you can set the cell background color, cell foreground color, cell border line line width and border line color, text size, text position in the cell, text font type, text bold
-style - Each column is styled, and similar to headStyle, this property takes precedence over the headStyle property
+`name` - The name of the column in the corresponding data table
+`alias` - The alias of the column (corresponding to the attribute name of the data model)
+`text` - Column header text of a table in an Excel file 
+`columnWidth` - To set the column width of a table in an Excel file, you can also use the `width` property
+`allowEmpty` - If set to true, null is allowed, and false is not allowed
+`type` - Data type, type range: `string`, `int`, `float`, `double`, `boolean`, `date`
+`length` - The allowable length of the data
+`headStyle` - Excel file column header style settings, you can set the cell background color, cell foreground color, cell border line line width and border line color, text size, text position in the cell, text font type, text bold
+`style` - Each column is styled, and similar to headStyle, this property takes precedence over the headStyle property
 
 Typically the configuration file is located in the project's resources directory:
 main
@@ -55,9 +55,9 @@ public class UserInformationApplication {
     }
 }
 
-How to use it?
+`How to use it?`
 This component supports data import and export in two formats: xls and xlsx file formats, in the program, Excel2003 means the suffix is xls file format, Excel2007 means suffix xlsx file format.
-1. Get the data of the Excel file
+`1. Get the data of the Excel file`
     @Autowired
     private IExcel2003Export excel2003Export;
     @Autowired
@@ -73,7 +73,7 @@ This component supports data import and export in two formats: xls and xlsx file
         }));
     }
    
-2. Import the data into an Excel file
+`2. Import the data into an Excel file`
     @Autowired
     private IExcel2003Export excel2003Export;
     @Autowired
