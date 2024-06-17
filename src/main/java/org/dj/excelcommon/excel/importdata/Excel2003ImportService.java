@@ -1,6 +1,7 @@
 package org.dj.excelcommon.excel.importdata;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.stereotype.Component;
 
 /**
@@ -9,8 +10,8 @@ import org.springframework.stereotype.Component;
  **/
 @Component
 public class Excel2003ImportService extends AbsExcelImportImpl implements IExcel2003Import {
-    public Excel2003ImportService() {
-        super();
-        workbook = new HSSFWorkbook();
+    @Override
+    protected Workbook getWorkbook() {
+        return new HSSFWorkbook();
     }
 }

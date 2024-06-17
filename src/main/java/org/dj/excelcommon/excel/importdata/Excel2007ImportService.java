@@ -1,5 +1,6 @@
 package org.dj.excelcommon.excel.importdata;
 
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Component;
 
@@ -10,8 +11,8 @@ import org.springframework.stereotype.Component;
  **/
 @Component
 public class Excel2007ImportService extends AbsExcelImportImpl implements IExcel2007Import {
-    public Excel2007ImportService() {
-        super();
-        workbook = new XSSFWorkbook();
+    @Override
+    protected Workbook getWorkbook() {
+        return new XSSFWorkbook();
     }
 }

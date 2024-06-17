@@ -4,6 +4,8 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Author DJ
@@ -11,10 +13,15 @@ import java.io.*;
  **/
 public abstract class AbsExcelImportImpl implements IExcelImport {
     protected Workbook workbook = null;
+    private final List<Sheet> sheets = new ArrayList<>();
 
     @Override
     public IExcelBuilder createBuilder(String tableOfConfig) throws Exception {
+        if (null == workbook) {
+            workbook = getWorkbook();
+        }
         Sheet sheet = workbook.createSheet();
+        sheets.add(sheet);
         return new ExcelBuilderImpl(sheet, tableOfConfig);
     }
 
@@ -85,6 +92,10 @@ public abstract class AbsExcelImportImpl implements IExcelImport {
 
     @Override
     public void close() throws Exception {
+        sheets.clear();
         workbook.close();
+        workbook = null;
     }
+
+    protected abstract Workbook getWorkbook();
 }

@@ -14,4 +14,9 @@ public interface IExcelExport {
     <T> void exportToEntityFromFile(String excelFile, int sheetIndex, String tableOfConfig, Class<T> entityType, FuncReceiveEntity funcReceiveEntity) throws Exception;
     void exportToMapFromStream(InputStream inputStream, int sheetIndex, String tableOfConfig, FuncReceiveMap funcReceiveMap) throws Exception;
     void exportToMapFromFile(String excelFile, int sheetIndex, String tableOfConfig, FuncReceiveMap funcReceiveMap) throws Exception;
+
+    <T> void exportToEntityFromStream(InputStream inputStream, String sheetName, String tableOfConfig, Class<T> entityType, FuncReceiveEntity funcReceiveEntity) throws Exception;
+    <T> void exportToEntityFromFile(String excelFile, String sheetName, String tableOfConfig, Class<T> entityType, FuncReceiveEntity funcReceiveEntity) throws Exception;
+    void exportToMapFromStream(InputStream inputStream, String sheetName, String tableOfConfig, FuncReceiveMap funcReceiveMap) throws Exception;
+    void exportToMapFromFile(String excelFile, String sheetName, String tableOfConfig, FuncReceiveMap funcReceiveMap) throws Exception;
 }

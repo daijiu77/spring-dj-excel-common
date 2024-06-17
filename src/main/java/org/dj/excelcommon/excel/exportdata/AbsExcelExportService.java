@@ -11,6 +11,7 @@ import org.dj.excelcommon.scanconfig.entities.TableInfo;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
@@ -23,29 +24,38 @@ import java.util.Map;
  **/
 public abstract class AbsExcelExportService extends AbsExcelService implements IExcelExport {
     private String tableOfConfig;
-    private Map<Integer, Method> setMethodMap = new HashMap<>();
     private Map<Integer, ColumnInfo> columnInfoMap = new HashMap<>();
 
     protected <T> T getEntityFromRow(Row row, int rowIndex, Class<T> entityType, String tableOfConfig) throws Exception {
+        initColumnInfoMap(row, rowIndex, tableOfConfig);
         TableInfo tableInfo = getTableInfo(tableOfConfig);
         int dataRowIndex = tableInfo.getDataRowIndex();
-        if (rowIndex == (dataRowIndex - 1)) {
-            if (!tableOfConfig.equals(this.tableOfConfig)) {
-                this.tableOfConfig = tableOfConfig;
-                initSetMethodMap(row, entityType, tableInfo);
-            }
-        }
         if (dataRowIndex > rowIndex) return null;
-        if (setMethodMap.isEmpty())
-            throw new Exception("In the attribute table=" + tableOfConfig + " of config file don't find any matching column.");
         T entity = entityType.getDeclaredConstructor().newInstance();
         int columnCount = row.getLastCellNum();
         for (int i = 0; i < columnCount; i++) {
-            if (!setMethodMap.containsKey(i)) continue;
+            if (!columnInfoMap.containsKey(i)) continue;
             Cell cell = row.getCell(i);
             Object val = getValue(cell);
             if (null == val) continue;
-            Method method = setMethodMap.get(i);
+            ColumnInfo ci = columnInfoMap.get(i);
+            String fieldName = ci.getAlias();
+            if (fieldName.isEmpty()) fieldName = ci.getName();
+            Method method = getMethodByName(entityType, fieldName, EMethodType.set);
+            /* if object is not exist set-method, then the property is assigned a value*/
+            if (null == method) {
+                Field field = getField(entityType, fieldName);
+                if (null != field) {
+                    try {
+                        val = convertTo(val, field.getType());
+                        field.setAccessible(true);
+                        field.set(entity, val);
+                    } catch (Exception e) {
+                        //
+                    }
+                }
+                continue;
+            }
             Class<?> paraType = method.getParameterTypes()[0];
             val = convertTo(val, paraType);
             try {
@@ -57,15 +67,27 @@ public abstract class AbsExcelExportService extends AbsExcelService implements I
         return entity;
     }
 
-    protected Map<String, Object> getMapFromRow(Row row, int rowIndex, String tableOfConfig) throws Exception {
-        TableInfo tableInfo = getTableInfo(tableOfConfig);
-        int dataRowIndex = tableInfo.getDataRowIndex();
-        if (rowIndex == (dataRowIndex - 1)) {
-            if (!tableOfConfig.equals(this.tableOfConfig)) {
-                this.tableOfConfig = tableOfConfig;
-                initColumnInfoMap(row, tableInfo.getColumnInfos());
+    protected Field getField(Class<?> clsType, String fieldName) {
+        Field field = null;
+        if (null == clsType) return field;
+        if (null == fieldName) return field;
+        if (fieldName.isEmpty()) return field;
+        String fnLower = fieldName.toLowerCase();
+        Field[] fields = clsType.getDeclaredFields();
+        for (Field fd : fields) {
+            String fl = fd.getName().toLowerCase();
+            if (fl.equals(fnLower)) {
+                field = fd;
+                break;
             }
         }
+        return field;
+    }
+
+    protected Map<String, Object> getMapFromRow(Row row, int rowIndex, String tableOfConfig) throws Exception {
+        initColumnInfoMap(row, rowIndex, tableOfConfig);
+        TableInfo tableInfo = getTableInfo(tableOfConfig);
+        int dataRowIndex = tableInfo.getDataRowIndex();
         if (dataRowIndex > rowIndex) return null;
         int columnCount = row.getLastCellNum();
         Map<String, Object> resultMap = new HashMap<>();
@@ -85,7 +107,7 @@ public abstract class AbsExcelExportService extends AbsExcelService implements I
         return resultMap;
     }
 
-    protected <T> void toEntityFromStream(Workbook workbook, int sheetIndex, String tableOfConfig, Class<T> entityType, FuncReceiveEntity funcReceiveEntity) throws Exception{
+    protected <T> void toEntityFromStream(Workbook workbook, int sheetIndex, String tableOfConfig, Class<T> entityType, FuncReceiveEntity funcReceiveEntity) throws Exception {
         execute(workbook, sheetIndex, ((row, rowIndex) -> {
             T entity = null;
             try {
@@ -98,7 +120,7 @@ public abstract class AbsExcelExportService extends AbsExcelService implements I
         }));
     }
 
-    protected void toMapFromStream(Workbook workbook, int sheetIndex, String tableOfConfig, FuncReceiveMap funcReceiveMap) throws Exception{
+    protected void toMapFromStream(Workbook workbook, int sheetIndex, String tableOfConfig, FuncReceiveMap funcReceiveMap) throws Exception {
         execute(workbook, sheetIndex, ((row, rowIndex) -> {
             Map<String, Object> dataMap = null;
             try {
@@ -118,7 +140,7 @@ public abstract class AbsExcelExportService extends AbsExcelService implements I
         return new FileInputStream(excelFile);
     }
 
-    private void execute(Workbook workbook, int sheetIndex, FuncExcelRow funcExcelRow){
+    private void execute(Workbook workbook, int sheetIndex, FuncExcelRow funcExcelRow) {
         Sheet sheet = workbook.getSheetAt(sheetIndex);
         int rowCount = sheet.getLastRowNum() + 1;
         for (int i = 0; i < rowCount; i++) {
@@ -127,8 +149,14 @@ public abstract class AbsExcelExportService extends AbsExcelService implements I
         }
     }
 
-    private void initColumnInfoMap(Row row, List<ColumnInfo> columnInfos) {
+    private void initColumnInfoMap(Row row, int rowIndex, String tableOfConfig) throws Exception {
+        TableInfo tableInfo = getTableInfo(tableOfConfig);
+        int dataRowIndex = tableInfo.getDataRowIndex();
+        if (rowIndex != (dataRowIndex - 1)) return;
+        if (tableOfConfig.equals(this.tableOfConfig)) return;
+        this.tableOfConfig = tableOfConfig;
         columnInfoMap.clear();
+        List<ColumnInfo> columnInfos = tableInfo.getColumnInfos();
         int columnCount = row.getLastCellNum();
         for (int i = 0; i < columnCount; i++) {
             String txt = getTextFromChild(row, i);
@@ -136,21 +164,6 @@ public abstract class AbsExcelExportService extends AbsExcelService implements I
             ColumnInfo columnInfo = getColumnInfoByText(columnInfos, txt);
             if (null == columnInfo) continue;
             columnInfoMap.put(i, columnInfo);
-        }
-    }
-
-    private void initSetMethodMap(Row row, Class<?> clsType, TableInfo tableInfo) {
-        setMethodMap.clear();
-        List<ColumnInfo> columnInfos = tableInfo.getColumnInfos();
-        if (null == columnInfos) return;
-        if (columnInfos.isEmpty()) return;
-        int columnCount = row.getLastCellNum();
-        for (int i = 0; i < columnCount; i++) {
-            String txt = getTextFromChild(row, i);
-            if (txt.isEmpty()) continue;
-            Method method = getMethodByText(columnInfos, clsType, txt, EMethodType.set);
-            if (null == method) continue;
-            setMethodMap.put(i, method);
         }
     }
 

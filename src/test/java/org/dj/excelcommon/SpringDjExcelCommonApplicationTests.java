@@ -38,9 +38,9 @@ class SpringDjExcelCommonApplicationTests {
         for (ColumnInfo ci : list) {
             System.out.println(ci.toString());
         }
-        String fPath = "D:\\UserInfo.xls";
+        String fPath = "D:\\user-info.xls";
         //IExcel2003Export excel2003Export = new Excel2003ExportService();
-        export.exportToEntityFromFile(fPath, 0, "UserInfo", UserInfo.class, ((entity, rowIndex) -> {
+        export.exportToEntityFromFile(fPath, 1, "UserInfo", UserInfo.class, ((entity, rowIndex) -> {
             System.out.println("row: " + rowIndex + ", data: " + entity.toString());
             return true;
         }));
