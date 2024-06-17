@@ -66,8 +66,9 @@ This component supports data import and export in two formats: xls and xlsx file
     @Test
     void getDataFromExcel() throws Exception {        
         String fPath = "D:\\user-info.xls";
+        //The third parameter value 'UserInfo', corresponds to the value of the table attribute in the xml configuration file
         excel2003Export.exportToEntityFromFile(fPath, "Sheet1", "UserInfo", UserInfo.class, ((entity, rowIndex) -> {
-            //获取 Excel 中每一行的数据
+            //Get the data for each row in the Excel file
             System.out.println("row: " + rowIndex + ", data: " + entity.toString());
             return true;
         }));
@@ -112,10 +113,10 @@ This component supports data import and export in two formats: xls and xlsx file
             }
         }
         return new byte[0];
-    }<br>
-<br>
-Use **IExcel2003Export** to call the createExcel method:<br>
-byte[] data = createExcel(`excel2003Import`);<br>
+    }
+
+Use IExcel2003Export to call the createExcel method:<br>
+byte[] data = createExcel(excel2003Import);<br>
 <br>
 Use IExcel2007Export to call the createExcel method:<br>
-byte[] data = createExcel(`excel2007Import`);
+byte[] data = createExcel(excel2007Import);
