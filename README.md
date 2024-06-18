@@ -59,9 +59,6 @@ This component supports data import and export in two formats: xls and xlsx file
    
 `2. Import the data into an Excel file`
 
-    @Autowired
-    private IExcel2003Export excel2003Export;
-    @Autowired
-    private IExcel2007Import excel2007Import;
+   
 <br>
 [You can also click on the link to view the use cases in the source code](/src/test/java/org/dj/excelcommon/SpringDjExcelCommonApplicationTests.java)
