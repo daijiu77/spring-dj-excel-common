@@ -20,7 +20,7 @@
     AQUA,LIME,GOLD,LIGHT_ORANGE,ORANGE,BLUE_GREY,GREY_40_PERCENT,DARK_TEAL,SEA_GREEN,DARK_GREEN,OLIVE_GREEN,BROWN,PLUM,INDIGO,GREY_80_PERCENT,AUTOMATIC
     -->
     <column alias="name" allowEmpty="false" columnWidth="100" length="5" name="name" text="Name" type="string" style=""/>
-    <column alias="sex" allowEmpty="false" columnWidth="80" length="1" name="gander" text="Gender" type="string" style=""/>
+    <column alias="sex" allowEmpty="false" columnWidth="80" length="1" name="gender" text="Gender" type="string" style=""/>
     <column alias="age" allowEmpty="true" columnWidth="80" name="age" text="Age" type="int" style=""/>
     <column alias="phone" allowEmpty="false" columnWidth="180" length="20" name="phone" text="Phone"
             type="string" style=""/>
