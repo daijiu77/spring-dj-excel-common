@@ -28,9 +28,8 @@ main<br>
 
 Add a @EnableExcelConfigScan annotation to the startup class and specify the XML configuration file directory location<br>
 example:<br>
-@SpringBootApplicatio<br>
-@EnableExcelConfigScan(configPackages = {"excelconfig"})<br>
-
+      @SpringBootApplicatio
+      @EnableExcelConfigScan(configPackages = {"excelconfig"})
       public class UserInformationApplication {
           public static void main(String[] args) {
               SpringApplication.run(UserInformationApplication.class, args);
