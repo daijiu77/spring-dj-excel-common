@@ -1,6 +1,7 @@
 package org.dj.excelcommon;
 
 import org.dj.excelcommon.excel.exportdata.IExcel2003Export;
+import org.dj.excelcommon.excel.exportdata.IExcel2007Export;
 import org.dj.excelcommon.excel.importdata.IExcel2003Import;
 import org.dj.excelcommon.excel.importdata.IExcel2007Import;
 import org.dj.excelcommon.excel.importdata.IExcelBuilder;
@@ -14,7 +15,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 @EnableExcelConfigScan(configPackages = {"ExcelConfigs"})
 class SpringDjExcelCommonApplicationTests {
     @Autowired
-    private IExcel2003Export export;
+    private IExcel2003Export excel2003Export;
+    @Autowired
+    private IExcel2007Export excel2007Export;
+
     @Autowired
     private IExcel2007Import excel2007Import;
     @Autowired
@@ -23,7 +27,16 @@ class SpringDjExcelCommonApplicationTests {
     @Test
     void contextLoads() throws Exception {
         String fPath = "D:\\user-info.xls";
-        export.exportToEntityFromFile(fPath, 1, "UserInfo", UserInfo.class, ((entity, rowIndex) -> {
+        excel2003Export.exportToEntityFromFile(fPath, 1, "UserInfo", UserInfo.class, ((entity, rowIndex) -> {
+            System.out.println("row: " + rowIndex + ", data: " + entity.toString());
+            return true;
+        }));
+    }
+
+    @Test
+    void Test_GetDataFromExcel2003() throws Exception {
+        String fPath = "D:\\user-info.xlsx";
+        excel2007Export.exportToEntityFromFile(fPath, 1, "UserInfo", UserInfo.class, ((entity, rowIndex) -> {
             System.out.println("row: " + rowIndex + ", data: " + entity.toString());
             return true;
         }));
