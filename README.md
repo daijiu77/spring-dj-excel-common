@@ -57,10 +57,11 @@ This component supports data import and export in two formats: xls and xlsx file
     }
    
 `2. Import the data into an Excel file`<br>
->>@Autowired<br>
->>private `IExcel2003Export` excel2003Export;<br>
->>@Autowired<br>
->>private `IExcel2007Import` excel2007Import;<br>
+
+    @Autowired<br>
+    private IExcel2003Export excel2003Export;
+    @Autowired
+    private IExcel2007Import excel2007Import;
    
     private byte[] createExcel(IExcelImport excelImport) {
         String extName = "xls";
