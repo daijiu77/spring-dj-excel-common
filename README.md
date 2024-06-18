@@ -63,11 +63,5 @@ This component supports data import and export in two formats: xls and xlsx file
     private IExcel2003Export excel2003Export;
     @Autowired
     private IExcel2007Import excel2007Import;
-
-    //Use IExcel2003Export to call the createExcel method
-    byte[] data = createExcel(excel2003Import);
-
-    //Use IExcel2007Export to call the createExcel method
-    byte[] data = createExcel(excel2007Import);
 <br>
 [You can also click on the link to view the use cases in the source code](/src/test/java/org/dj/excelcommon/SpringDjExcelCommonApplicationTests.java)
