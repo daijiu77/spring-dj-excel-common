@@ -40,10 +40,11 @@ example:<br>
 `How to use it?`<br>
 This component supports data import and export in two formats: xls and xlsx file formats, in the program, Excel2003 means the suffix is xls file format, Excel2007 means suffix xlsx file format.<br>
 `1. Get the data of the Excel file`<br>
->>@Autowired<br>
->>private `IExcel2003Export` excel2003Export;<br>
->>@Autowired<br>
->>private `IExcel2007Import` excel2007Import;<br>
+
+    @Autowired
+    private IExcel2003Export excel2003Export;
+    @Autowired
+    private IExcel2007Import excel2007Import;
 
     @Test
     void getDataFromExcel() throws Exception {        
