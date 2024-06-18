@@ -57,8 +57,52 @@ This component supports data import and export in two formats: xls and xlsx file
         }));
     }
    
-`2. Import the data into an Excel file`
 
+
+    @Autowired
+    private IExcel2003Export excel2003Export;
+    @Autowired
+    private IExcel2007Import excel2007Import;
    
+    private byte[] createExcel(IExcelImport excelImport) {
+        String extName = "xls";
+        if (IExcel2007Import.class.isAssignableFrom(excelImport.getClass())) extName = "xlsx";   
+        try {
+            //Getting an IExcelBuilder interface object is equivalent to creating a new sheet form
+            IExcelBuilder builder = excelImport.createBuilder("UserInfo");
+            UserInfo userInfo = new UserInfo();
+            userInfo.setName("DJ").setAge(18).setPhone("1231456789").setGender(1).setUid("admin")
+                    .setPwd("admin").setEmail("dj@qq.com").setAddress("China")
+                    .setOrder_by(1).setIs_enabled(true);
+            builder.createRow(userInfo, UserInfo.class);
+
+            //Here we get another IExcelBuilder interface object, and we create a new sheet again
+            builder = excelImport.createBuilder("UserInfo");
+            builder.setSheetName("UserInfoQueryDTO");
+            //Here's how to get the UserInfo data from the database and import it into the newly created sheet form
+            List<UserInfoQueryDTO> dtos = findUserInfoByName("allan");
+            builder.createRows(dtos, UserInfoQueryDTO.class);
+
+            byte[] datas = excelImport.getBytes();
+            //You can also choose to save the created Excel file to a specified disk location
+            //excelImport.save("D:\\user-info.xlsx");
+            return datas;
+        } catch (Exception e) {
+            System.out.println("Excel import exception: " + e);
+        } finally {
+            try {
+                excelImport.close();
+            } catch (Exception e) {
+                //
+            }
+        }
+        return new byte[0];
+    }
+
+    //Use IExcel2003Export to call the createExcel method
+    byte[] data = createExcel(excel2003Import);
+
+    //Use IExcel2007Export to call the createExcel method
+    byte[] data = createExcel(excel2007Import);
 <br>
 [You can also click on the link to view the use cases in the source code](/src/test/java/org/dj/excelcommon/SpringDjExcelCommonApplicationTests.java)
