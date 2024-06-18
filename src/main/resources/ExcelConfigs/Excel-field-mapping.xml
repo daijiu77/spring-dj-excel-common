@@ -2,22 +2,32 @@
 <FieldMappings table="UserInfo"
                title="User information"
                headStyle="text-align:center;text-valign:center;background-color:green;color:white;border-width:1px;border-color:yellow;">
-    <column alias="id" allowEmpty="true" columnWidth="500" length="36" name="id" text="id" type="string" index="1" style="" />
-    <column alias="order_by" allowEmpty="false" columnWidth="100" name="order_by" text="Serial" type="int" index="2" style="" />
-    <column alias="uid" allowEmpty="false" columnWidth="100" length="50" name="uid" text="Account" type="string" index="3" style=""/>
-    <column alias="pwd" allowEmpty="false" columnWidth="100" length="50" name="pwd" text="Password" type="string" index="4" style=""/>
-    <column alias="user_type" allowEmpty="true" columnWidth="120" length="0" name="user_type" text="UserType" index="5" style=""/>
-    <column alias="name" allowEmpty="false" columnWidth="100" length="5" name="name" text="Name" type="string" index="6" style=""/>
-    <column alias="gender" allowEmpty="false" columnWidth="80" length="1" name="gender" text="Gender" type="int" index="7" style=""/>
-    <column alias="age" allowEmpty="true" columnWidth="80" name="age" text="Age" type="int" index="8" style=""/>
-    <column alias="phone" allowEmpty="false" columnWidth="180" length="20" name="phone" text="Phone" type="string" index="9" style=""/>
+    <!--
+    name - The name of the column in the corresponding data table
+    alias - The alias of the column (corresponding to the property name of the data model)
+    text - Column header text of a table in an Excel file
+    columnWidth - To set the column width of a table in an Excel file, you can also use the width property
+    allowEmpty - If set to true, null is allowed, and false is not allowed
+    type - Data type, type range: string, int, float, double, boolean, date
+    length - The allowable length of the data
+    headStyle - Excel file column header style settings, you can set the cell background color, cell foreground color, cell border line line width and border line color, text size, text position in the cell, text font type, text bold
+    style - Each column is styled, and similar to headStyle, this property takes precedence over the headStyle property
+    -->
+    <!-- Colors supported by the system：
+    BLACK1,WHITE1,RED1,BRIGHT_GREEN1,BLUE1,YELLOW1,PINK1,TURQUOISE1,BLACK,WHITE,RED,BRIGHT_GREEN,BLUE,YELLOW,PINK,TURQUOISE,DARK_RED,
+    GREEN,DARK_BLUE,DARK_YELLOW,VIOLET,TEAL,GREY_25_PERCENT,GREY_50_PERCENT,CORNFLOWER_BLUE,MAROON,LEMON_CHIFFON,LIGHT_TURQUOISE1,ORCHID,
+    CORAL,ROYAL_BLUE,LIGHT_CORNFLOWER_BLUE,SKY_BLUE,LIGHT_TURQUOISE,LIGHT_GREEN,LIGHT_YELLOW,PALE_BLUE,ROSE,LAVENDER,TAN,LIGHT_BLUE,
+    AQUA,LIME,GOLD,LIGHT_ORANGE,ORANGE,BLUE_GREY,GREY_40_PERCENT,DARK_TEAL,SEA_GREEN,DARK_GREEN,OLIVE_GREEN,BROWN,PLUM,INDIGO,GREY_80_PERCENT,AUTOMATIC
+    -->
+    <column alias="name" allowEmpty="false" columnWidth="100" length="5" name="name" text="Name" type="string" style=""/>
+    <column alias="sex" allowEmpty="false" columnWidth="80" length="1" name="gander" text="Gender" type="string" style=""/>
+    <column alias="age" allowEmpty="true" columnWidth="80" name="age" text="Age" type="int" style=""/>
+    <column alias="phone" allowEmpty="false" columnWidth="180" length="20" name="phone" text="Phone"
+            type="string" style=""/>
     <!--If the column has children, it means that the parent column needs to be displayed across columns-->
-    <column alias="course" name="course" text="Course" index="10">
-        <column alias="chemistry" allowEmpty="true" columnWidth="120" length="0" name="chinese" text="Chemistry" type="float" index="2" style=""/>
-        <column alias="physics" allowEmpty="true" columnWidth="120" length="0" name="physics" text="Physics" type="float" index="1" style=""/>
+    <column alias="course" name="course" text="Course">
+        <column alias="chinese" allowEmpty="false" columnWidth="120" length="0" name="chinese" text="Chinese" type="float" style=""/>
+        <column alias="physics" allowEmpty="false" columnWidth="120" length="0" name="physics" text="Physics" type="float" style=""/>
     </column>
-    <column alias="email" allowEmpty="true" columnWidth="200" length="200" name="email" text="Email" type="string" index="11" style=""/>
-    <column alias="address" allowEmpty="true" width="300" length="100" name="address" text="Address" type="string" index="12" style=""/>
-    <column alias="is_enabled" allowEmpty="false" columnWidth="100" name="is_enabled" text="Enable" type="boolean" index="13" style="" />
-    <column alias="create_time" allowEmpty="true" columnWidth="280" name="create_time" text="CreateDate" type="date" index="14" style="" />
+    <column alias="address" allowEmpty="true" width="300" length="100" name="address" text="Address" type="string" style=""/>
 </FieldMappings>
