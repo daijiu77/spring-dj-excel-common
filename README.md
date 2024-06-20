@@ -80,7 +80,7 @@ This component supports data import and export in two formats: xls and xlsx file
             //Here we get another IExcelBuilder interface object, and we create a new sheet again
             builder = excelImport.createBuilder("UserInfo");
             builder.setSheetName("UserInfoQueryDTO");
-            //Here's how to get the UserInfo data from the database and import it into the newly created sheet form
+            //Here's how to get the UserInfo data from the database and import it into the newly created sheet table
             List<UserInfoQueryDTO> dtos = findUserInfoByName("allan");
             builder.createRows(dtos, UserInfoQueryDTO.class);
 
