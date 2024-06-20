@@ -86,7 +86,7 @@ This component supports data import and export in two formats: xls and xlsx file
 
             byte[] datas = excelImport.getBytes();
             //You can also choose to save the created Excel file to a specified disk location
-            //excelImport.save("D:\\user-info.xlsx");
+            //excelImport.save("D:\\user-info." + extName);
             return datas;
         } catch (Exception e) {
             System.out.println("Excel import exception: " + e);
