@@ -8,6 +8,7 @@ The following is a simple configuration file example, and the configuration file
 
 Configuration description：<br>
 `name` - The name of the column in the corresponding data table<br>
+`index` - Ordinal number, set the order in which the columns are displayed in the Excel sheet, and if not set, they are displayed in order from top to bottom in the profile<br>
 `alias` - The alias of the column (corresponding to the property name of the data model)<br>
 `text` - Column header text of a table in an Excel file<br>
 `columnWidth` - To set the column width of a table in an Excel file, you can also use the `width` property<br>
