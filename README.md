@@ -5,18 +5,24 @@ First of all, create a configuration file for the relationship between the Excel
 The following is a simple configuration file example, and the configuration file name can be named according to the actual business, You can see the sample configuration file in the source code package under the `resources/excelconfigs` path.
 [You can click to view the profile](/src/main/resources/ExcelConfigs/Excel-field-mapping.xml)
 
+*FieldMappings* tab attributes description:<br>
+`table` - The name of the table, which is used when performing a data import or export in the program<br>
+`title` - sheet table. When the data is imported into Excel, the value of the attribute is not empty for several miles, and the value of the attribute will be displayed in the first row and column of the sheet table<br>
+`headStyle` - Excel file column header style settings, you can set the cell background color, cell foreground color, cell border line line width and border line color, text size, text position in the cell, text font type, text bold<br>
 
-Configuration description：<br>
+*column* tab attributes description:<br>
 `name` - The name of the column in the corresponding data table<br>
 `index` - Ordinal number, set the order in which the columns are displayed in the Excel sheet, and if not set, they are displayed in order from top to bottom in the profile<br>
-`alias` - The alias of the column (corresponding to the property name of the data model)<br>
+`alias` - The alias of the column (corresponding to the attribute name of the data model)<br>
 `text` - Column header text of a table in an Excel file<br>
-`columnWidth` - To set the column width of a table in an Excel file, you can also use the `width` property<br>
+`columnWidth` - To set the column width of a table in an Excel file, you can also use the *width* attribute<br>
 `allowEmpty` - If set to true, null is allowed, and false is not allowed<br>
-`type` - Data type, type range: `string`, `int`, `float`, `double`, `boolean`, `date`<br>
+`type` - Data type, type range: string, int, float, double, boolean, date<br>
 `length` - The allowable length of the data<br>
 `headStyle` - Excel file column header style settings, you can set the cell background color, cell foreground color, cell border line line width and border line color, text size, text position in the cell, text font type, text bold<br>
-`style` - Each column is styled, and similar to headStyle, this property takes precedence over the headStyle property<br>
+`style` - Each column is styled, and similar to headStyle, this attribute takes precedence over the *headStyle* attribute<br>
+`headStyle` - Set the column header style corresponding to the current column in Excel separately, which takes precedence over the *style* attribute and the *headStyle* attribute in the FieldMapping tab<br>
+`dataStyle` - Sets the data region style for the current column in Excel separately, which takes precedence over the *style* attribute<br>
 
 Typically the configuration file is located in the project's resources directory:<br>
 main<br>
