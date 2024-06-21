@@ -50,7 +50,7 @@ This component supports data import and export in two formats: xls and xlsx file
     @Autowired
     private IExcel2003Export excel2003Export;
     @Autowired
-    private IExcel2007Import excel2007Import;
+    private IExcel2007Import excel2007Export;
 
     @Test
     void getDataFromExcel() throws Exception {        
@@ -66,7 +66,7 @@ This component supports data import and export in two formats: xls and xlsx file
 `2. Import the data into an Excel file`
 
     @Autowired
-    private IExcel2003Export excel2003Export;
+    private IExcel2003Import excel2003Import;
     @Autowired
     private IExcel2007Import excel2007Import;
    
@@ -105,10 +105,10 @@ This component supports data import and export in two formats: xls and xlsx file
         return new byte[0];
     }
 
-    //Use IExcel2003Export to call the createExcel method
+    //Use IExcel2003Import to call the createExcel method
     byte[] data = createExcel(excel2003Import);
 
-    //Use IExcel2007Export to call the createExcel method
+    //Use IExcel2007Import to call the createExcel method
     byte[] data = createExcel(excel2007Import);
 
 [You can also click on the link to view the use cases in the source code](/src/test/java/org/dj/excelcommon/SpringDjExcelCommonApplicationTests.java)
