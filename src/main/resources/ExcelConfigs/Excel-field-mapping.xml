@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+FieldMappings tab attributes description:
+table - The name of the table, which is used when performing a data import or export in the program
+title - sheet table. When the data is imported into Excel, the value of the attribute is not empty for several miles, and the value of the attribute will be displayed in the first row and column of the sheet table
+headStyle - Excel file column header style settings, you can set the cell background color, cell foreground color, cell border line line width and border line color, text size, text position in the cell, text font type, text bold
+-->
+<!-- Colors supported by the system：
+    BLACK1,WHITE1,RED1,BRIGHT_GREEN1,BLUE1,YELLOW1,PINK1,TURQUOISE1,BLACK,WHITE,RED,BRIGHT_GREEN,BLUE,YELLOW,PINK,TURQUOISE,DARK_RED,
+    GREEN,DARK_BLUE,DARK_YELLOW,VIOLET,TEAL,GREY_25_PERCENT,GREY_50_PERCENT,CORNFLOWER_BLUE,MAROON,LEMON_CHIFFON,LIGHT_TURQUOISE1,ORCHID,
+    CORAL,ROYAL_BLUE,LIGHT_CORNFLOWER_BLUE,SKY_BLUE,LIGHT_TURQUOISE,LIGHT_GREEN,LIGHT_YELLOW,PALE_BLUE,ROSE,LAVENDER,TAN,LIGHT_BLUE,
+    AQUA,LIME,GOLD,LIGHT_ORANGE,ORANGE,BLUE_GREY,GREY_40_PERCENT,DARK_TEAL,SEA_GREEN,DARK_GREEN,OLIVE_GREEN,BROWN,PLUM,INDIGO,GREY_80_PERCENT,AUTOMATIC
+    -->
+<FieldMappings table="UserInfo"
+               title="User information"
+               headStyle="text-align:center;text-valign:center;background-color:green;color:white;border-width:1px;border-color:yellow;">
+    <!--
+column tab attributes description:
+name - The name of the column in the corresponding data table
+index - Ordinal number, set the order in which the columns are displayed in the Excel sheet, and if not set, they are displayed in order from top to bottom in the profile
+alias - The alias of the column (corresponding to the property name of the data model)
+text - Column header text of a table in an Excel file
+columnWidth - To set the column width of a table in an Excel file, you can also use the width attribute
+allowEmpty - If set to true, null is allowed, and false is not allowed
+type - Data type, type range: string, int, float, double, boolean, date
+length - The allowable length of the data
+headStyle - Excel file column header style settings, you can set the cell background color, cell foreground color, cell border line line width and border line color, text size, text position in the cell, text font type, text bold
+style - Each column is styled, and similar to headStyle, this property takes precedence over the headStyle attribute
+headStyle - Set the column header style corresponding to the current column in Excel separately, which takes precedence over the style attribute and the headStyle attribute in the FieldMapping tab
+dataStyle - Sets the data region style for the current column in Excel separately, which takes precedence over the style attribute
+-->
+    <column alias="name" allowEmpty="false" columnWidth="100" length="5" name="name" text="Name" type="string" style=""/>
+    <column alias="sex" allowEmpty="false" columnWidth="80" length="1" name="gender" text="Gender" type="string" style=""/>
+    <column alias="age" allowEmpty="true" columnWidth="80" name="age" text="Age" type="int" style=""/>
+    <column alias="phone" allowEmpty="false" columnWidth="180" length="20" name="phone" text="Phone" type="string" style=""/>
+    <!--If the column has children, it means that the parent column needs to be displayed across columns-->
+    <column alias="course" name="course" text="Course">
+        <column alias="chinese" allowEmpty="true" columnWidth="120" length="0" name="chinese" text="Chinese" type="float" style=""/>
+        <column alias="physics" allowEmpty="true" columnWidth="120" length="0" name="physics" text="Physics" type="float" style=""/>
+    </column>
+    <column alias="address" allowEmpty="true" width="300" length="100" name="address" text="Address" type="string" style=""/>
+</FieldMappings>
