@@ -15,20 +15,20 @@ headStyle - Excel file column header style settings, you can set the cell backgr
                title="User information"
                headStyle="text-align:center;text-valign:center;background-color:green;color:white;border-width:1px;border-color:yellow;">
     <!--
-column tab attributes description:
-name - The name of the column in the corresponding data table
-index - Ordinal number, set the order in which the columns are displayed in the Excel sheet, and if not set, they are displayed in order from top to bottom in the profile
-alias - The alias of the column (corresponding to the property name of the data model)
-text - Column header text of a table in an Excel file
-columnWidth - To set the column width of a table in an Excel file, you can also use the width attribute
-allowEmpty - If set to true, null is allowed, and false is not allowed
-type - Data type, type range: string, int, float, double, boolean, date
-length - The allowable length of the data
-headStyle - Excel file column header style settings, you can set the cell background color, cell foreground color, cell border line line width and border line color, text size, text position in the cell, text font type, text bold
-style - Each column is styled, and similar to headStyle, this property takes precedence over the headStyle attribute
-headStyle - Set the column header style corresponding to the current column in Excel separately, which takes precedence over the style attribute and the headStyle attribute in the FieldMapping tab
-dataStyle - Sets the data region style for the current column in Excel separately, which takes precedence over the style attribute
--->
+    column tab attributes description:
+    name - The name of the column in the corresponding data table
+    index - Ordinal number, set the order in which the columns are displayed in the Excel sheet, and if not set, they are displayed in order from top to bottom in the profile
+    alias - The alias of the column (corresponding to the property name of the data model)
+    text - Column header text of a table in an Excel file
+    columnWidth - To set the column width of a table in an Excel file, you can also use the width attribute
+    allowEmpty - If set to true, null is allowed, and false is not allowed
+    type - Data type, type range: string, int, float, double, boolean, date
+    length - The allowable length of the data
+    headStyle - Excel file column header style settings, you can set the cell background color, cell foreground color, cell border line line width and border line color, text size, text position in the cell, text font type, text bold
+    style - Each column is styled, and similar to headStyle, this property takes precedence over the headStyle attribute
+    headStyle - Set the column header style corresponding to the current column in Excel separately, which takes precedence over the style attribute and the headStyle attribute in the FieldMapping tab
+    dataStyle - Sets the data region style for the current column in Excel separately, which takes precedence over the style attribute
+    -->
     <column alias="name" allowEmpty="false" columnWidth="100" length="5" name="name" text="Name" type="string" style=""/>
     <column alias="sex" allowEmpty="false" columnWidth="80" length="1" name="gender" text="Gender" type="string" style=""/>
     <column alias="age" allowEmpty="true" columnWidth="80" name="age" text="Age" type="int" style=""/>
