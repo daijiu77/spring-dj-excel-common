@@ -24,9 +24,9 @@ headStyle - Excel file column header style settings, you can set the cell backgr
     allowEmpty - If set to true, null is allowed, and false is not allowed
     type - Data type, type range: string, int, float, double, boolean, date
     length - The allowable length of the data
-    headStyle - Excel file column header style settings, you can set the cell background color, cell foreground color, cell border line line width and border line color, text size, text position in the cell, text font type, text bold
     style - Each column is styled, and similar to headStyle, this property takes precedence over the headStyle attribute
-    headStyle - Set the column header style corresponding to the current column in Excel separately, which takes precedence over the style attribute and the headStyle attribute in the FieldMapping tab
+    headStyle - Set the column header style corresponding to the current column in Excel separately, which takes precedence over the style attribute and the headStyle attribute in the FieldMapping tab,
+                you can set the cell background color, cell foreground color, cell border line line width and border line color, text size, text position in the cell, text font type, text bold
     dataStyle - Sets the data region style for the current column in Excel separately, which takes precedence over the style attribute
     -->
     <column alias="name" allowEmpty="false" columnWidth="100" length="5" name="name" text="Name" type="string" style=""/>
