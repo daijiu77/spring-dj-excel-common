@@ -19,9 +19,9 @@ The following is a simple configuration file example, and the configuration file
 `allowEmpty` - If set to true, null is allowed, and false is not allowed<br>
 `type` - Data type, type range: string, int, float, double, boolean, date<br>
 `length` - The allowable length of the data<br>
-`headStyle` - Excel file column header style settings, you can set the cell background color, cell foreground color, cell border line line width and border line color, text size, text position in the cell, text font type, text bold<br>
 `style` - Each column is styled, and similar to headStyle, this attribute takes precedence over the *headStyle* attribute<br>
 `headStyle` - Set the column header style corresponding to the current column in Excel separately, which takes precedence over the *style* attribute and the *headStyle* attribute in the FieldMapping tab<br>
+　　　　　　you can set the cell background color, cell foreground color, cell border line line width and border line color, text size, text position in the cell, text font type, text bold<br>
 `dataStyle` - Sets the data region style for the current column in Excel separately, which takes precedence over the *style* attribute<br>
 
 Typically the configuration file is located in the project's resources directory:<br>
