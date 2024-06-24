@@ -23,6 +23,22 @@ The following is a simple configuration file example, and the configuration file
 `headStyle` - Set the column header style corresponding to the current column in Excel separately, which takes precedence over the **style** attribute and the **headStyle** attribute in the FieldMapping tab,  you can set the cell background color, cell foreground color, cell border line line width and border line color, text size, text position in the cell, text font type, text bold<br>
 `dataStyle` - Sets the data region style for the current column in Excel separately, which takes precedence over the **style** attribute<br>
 
+**Range of style support:**<br>
+`color` - Set the font color, only support values within the color gamut<br>
+`font-family` - Set the font name<br>
+`font-italic` - Sets whether the font is italic, and the text appears in italics when the value is true<br>
+`font-weight` - Set the font to be bold, and bold when the value is true<br>
+`font-size` - Set the font size<br>
+`text-underline` - Sets whether the text needs to be underlined, and underlined if the value is true<br>
+`text-align` - The position of the text in the horizontal direction in the cell, the value range: left, center, right<br>
+`text-valign` - The position of the text in the vertical direction in the cell, and the value range is: top, center, bottom<br>
+`background-color` - Set the background color of the cell, only support values within the color gamut<br>
+`border-width` - Set the width of the cell border, the value range is 0~13<br>
+`border-color` - Set the color of the cell border，only support values within the color gamut<br>
+
+**The range of color gamuts supported by the system:**<br>
+BLACK1, WHITE1, RED1, BRIGHT_GREEN1, BLUE1, YELLOW1, PINK1, TURQUOISE1, BLACK, WHITE, RED, BRIGHT_GREEN, BLUE, YELLOW, PINK, TURQUOISE, DARK_RED, GREEN, DARK_BLUE, DARK_YELLOW, VIOLET, TEAL, GREY_25_PERCENT, GREY_50_PERCENT, CORNFLOWER_BLUE, MAROON, LEMON_CHIFFON, LIGHT_TURQUOISE1, ORCHID, CORAL, ROYAL_BLUE, LIGHT_CORNFLOWER_BLUE, SKY_BLUE, LIGHT_TURQUOISE, LIGHT_GREEN, LIGHT_YELLOW, PALE_BLUE, ROSE, LAVENDER, TAN, LIGHT_BLUE, AQUA, LIME, GOLD, LIGHT_ORANGE, ORANGE, BLUE_GREY, GREY_40_PERCENT, DARK_TEAL, SEA_GREEN, DARK_GREEN, OLIVE_GREEN, BROWN, PLUM, INDIGO, GREY_80_PERCENT<br>
+
 Typically the configuration file is located in the project's resources directory:<br>
 main<br>
 --java<br>
