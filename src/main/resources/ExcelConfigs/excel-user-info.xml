@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<FieldMappings table="UserInfo"
+               title="用户信息表"
+               headStyle="text-align:center;text-valign:center;background-color:green;color:white;border-width:1px;border-color:yellow;">
+    <column alias="id" allowEmpty="true" columnWidth="500" length="36" name="id" text="id" type="string" style="" />
+    <column alias="order_by" allowEmpty="false" columnWidth="100" name="order_by" text="序号" type="int" style="" />
+    <column alias="uid" allowEmpty="false" columnWidth="100" length="50" name="uid" text="帐号" type="string" style=""/>
+    <column alias="pwd" allowEmpty="false" columnWidth="100" length="50" name="pwd" text="密码" type="string" style=""/>
+    <column alias="user_type" allowEmpty="true" columnWidth="120" length="0" name="user_type" text="用户类型" style=""/>
+    <column alias="name" allowEmpty="false" columnWidth="100" length="5" name="name" text="姓名" type="string" style=""/>
+    <column alias="gender" allowEmpty="false" columnWidth="80" length="1" name="gender" text="性别" type="int" style=""/>
+    <column alias="age" allowEmpty="true" columnWidth="80" name="age" text="年龄" type="int" style=""/>
+    <column alias="phone" allowEmpty="false" columnWidth="180" length="20" name="phone" text="电话" type="string" style=""/>
+    <column alias="weixin" allowEmpty="true" columnWidth="120" length="20" name="weixin" text="微信" type="string" style=""/>
+    <column alias="qq" allowEmpty="true" columnWidth="120" length="20" name="qq" text="QQ" type="string" style=""/>
+    <column alias="email" allowEmpty="true" columnWidth="200" length="200" name="email" text="邮箱" type="string" style=""/>
+    <column alias="address" allowEmpty="true" width="300" length="100" name="address" text="地址" type="string" style=""/>
+    <column alias="depart_name" allowEmpty="true" width="200" length="100" name="depart_name" text="部门名称" type="string" style=""/>
+    <column alias="is_enabled" allowEmpty="false" columnWidth="100" name="is_enabled" text="启用" type="boolean" style="" />
+    <column alias="create_time" allowEmpty="true" columnWidth="280" name="create_time" text="创建日期" type="date" style="" />
+</FieldMappings>
